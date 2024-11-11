@@ -4,9 +4,11 @@ import { AppService } from './app.service';
 import { PostModule } from './post/post.module';
 import { APP_FILTER } from '@nestjs/core';
 import { HttpExceptionFilter } from './http-exception.filter';
+import { DatabaseModule } from './database/database.module';
+import { PostSeeder } from './database/seeders/post.seeder';
 
 @Module({
-  imports: [PostModule],
+  imports: [PostModule, DatabaseModule],
   controllers: [AppController],
   providers: [
     {
@@ -14,6 +16,7 @@ import { HttpExceptionFilter } from './http-exception.filter';
       useClass: HttpExceptionFilter,
     },
     AppService,
+    PostSeeder,
   ],
 })
 export class AppModule {}

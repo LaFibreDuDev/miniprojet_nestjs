@@ -5,7 +5,7 @@ export class CreatePostDto {
   @ApiProperty({ example: 'Exemple de titre', description: 'Le titre du post' })
   @IsString()
   @IsNotEmpty()
-  name: string;
+  title: string;
 
   @ApiProperty({
     example: 'Exemple de description',

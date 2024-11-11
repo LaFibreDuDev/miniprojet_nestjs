@@ -9,7 +9,7 @@ export class Post {
 
   @Column({ length: 500 })
   @ApiProperty({ description: 'Titre du post' })
-  name: string;
+  title: string;
 
   @Column('text')
   @ApiProperty({ description: 'Contenu du post' })
