@@ -6,9 +6,12 @@ import { APP_FILTER } from '@nestjs/core';
 import { HttpExceptionFilter } from './http-exception.filter';
 import { DatabaseModule } from './database/database.module';
 import { PostSeeder } from './database/seeders/post.seeder';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
+import { UserSeeder } from './database/seeders/user.seeder';
 
 @Module({
-  imports: [PostModule, DatabaseModule],
+  imports: [PostModule, DatabaseModule, AuthModule, UserModule],
   controllers: [AppController],
   providers: [
     {
@@ -17,6 +20,7 @@ import { PostSeeder } from './database/seeders/post.seeder';
     },
     AppService,
     PostSeeder,
+    UserSeeder,
   ],
 })
 export class AppModule {}
