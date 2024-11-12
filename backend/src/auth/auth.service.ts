@@ -16,7 +16,7 @@ export class AuthService {
   ): Promise<{ access_token: string }> {
     const user = await this.userService.findByUsername(username);
 
-    if (!user) {
+    if (!user || !user.isActive) {
       throw new UnauthorizedException();
     }
     const match = await bcrypt.compare(pass, user?.password);
@@ -28,5 +28,14 @@ export class AuthService {
     return {
       access_token: await this.jwtService.signAsync(payload),
     };
+  }
+
+  async validateUser(username: string, pass: string): Promise<any> {
+    const user = await this.userService.findByUsername(username);
+    if (user && user.password === pass) {
+      const { password, ...result } = user;
+      return result;
+    }
+    return null;
   }
 }

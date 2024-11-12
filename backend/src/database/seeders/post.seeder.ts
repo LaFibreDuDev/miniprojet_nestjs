@@ -1,4 +1,4 @@
-import { DataSource, Repository } from 'typeorm';
+import { DataSource } from 'typeorm';
 import { Inject, Injectable } from '@nestjs/common';
 import { Post } from '../../post/entities/post.entity';
 import { faker } from '@faker-js/faker';

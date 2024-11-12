@@ -7,6 +7,8 @@ import {
   Param,
   Delete,
   ParseIntPipe,
+  UseGuards,
+  Request,
 } from '@nestjs/common';
 import { PostService } from './post.service';
 import { CreatePostDto } from './dto/create-post.dto';
@@ -21,6 +23,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { Post as PostEntity } from './entities/post.entity';
+import { AuthGuard } from '@nestjs/passport';
 
 @ApiTags('posts')
 @Controller('post')
